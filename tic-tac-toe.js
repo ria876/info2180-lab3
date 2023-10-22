@@ -16,24 +16,6 @@ window.onload = function(){
     ];
     let gameOver = false;
 
-    // for(let c = 0; c < 9; c++){
-    //     cell[c].classList.add("square");
-    //     cell[c].addEventListener('click', function() {
-    //         if (gameState[c] === '') {
-    //             gameState[c] = currentPlayer;
-    //             cell[c].classList.add(currentPlayer);
-    //             cell[c].innerHTML = currentPlayer;
-    //             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    //             checkforWin();
-    //         }
-    //     });
-    //     cell[c].addEventListener('mouseover', function() {
-    //         cell[c].classList.add('hover');
-    //     });
-    //     cell[c].addEventListener('mouseout', function() {
-    //         cell[c].classList.remove('hover');
-    //     });
-    // }
     for(let c = 0; c < 9; c++){
         cell[c].classList.add("square");
         let clickHandler = function() {
@@ -63,6 +45,7 @@ window.onload = function(){
                 status.innerHTML = `Congratulations! ${gameState[a]} is the Winner!`;
                 status.classList.add('you-won');
                 //disableBoard();
+                enableNewGameButton();
                 return;
             }
         }
@@ -76,6 +59,13 @@ window.onload = function(){
     //     newGameButton.disabled = true;
     // }
 
+    function enableNewGameButton() {
+        let newGameButton = document.querySelector('.btn');
+        newGameButton.addEventListener('click', function() {
+            window.location.reload(true);
+        });
+    }
 
+    enableNewGameButton();
 }
 
